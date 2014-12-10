@@ -1,5 +1,4 @@
 #!/usr/bin/perl -w
-
 use XML::Simple qw/XMLout XMLin/;
 use Getopt::Long;
 use Digest::MD5 qw/md5_hex/;
@@ -27,6 +26,13 @@ my @getopt =
 GetOptions(\%opt, @getopt) or do { print STDERR usage(); exit 1; };
 do { print usage(); exit 0; } if $opt{help};
 
+ensure_dir($opt{prefix});
+
+my $tempdir_xxx = sprintf '%s/tmp.%s.XXXXXX'
+  => $opt{prefix}, strftime('%F', localtime);
+my $tempdir = tempdir($tempdir_xxx);
+
+
 if (!-e "$opt{prefix}/config") {
   print STDERR "entering one-time setup...\n";
   setup();
@@ -35,9 +41,6 @@ if (!-e "$opt{prefix}/config") {
 my $config = read_config("$opt{prefix}/config");
 my $mdu = mdu_init();
 my $ua = LWP::UserAgent->new;
-my $tempdir_xxx = sprintf '%s/tmp.%s.XXXXXX'
-  => $opt{prefix}, strftime('%F', localtime);
-my $tempdir = tempdir($tempdir_xxx);
 
 $config->{mailfolder} = $opt{mailfolder} if $opt{mailfolder};
 
@@ -122,7 +125,6 @@ sub usage {
 
 sub setup {
   die "no mailfolder specified (--mailfolder=xyz)" unless $opt{mailfolder};
-  ensure_dir($opt{prefix});
   ensure_dir("$opt{prefix}/tmp");
   safe_write_config({ mailfolder => $opt{mailfolder} });
 }
@@ -419,7 +421,6 @@ sub serialise_config {
 sub safe_write_config {
   my $config = shift;
   my $str = serialise_config($config);
-
   safe_cat($str, "$opt{prefix}/config", "$tempdir/config");
 }
 
@@ -652,7 +653,7 @@ sub new { bless $_[1] => ref($_[0]) || $_[0]; }
 sub title { return _atom_content(shift->{title}) }
 sub content { return _atom_content(shift->{content}) }
 sub pub_time { return _atom_content(shift->{published}) }
-sub author { my $w = shift->{author}; return "$w->{email} <$w->{name}>" }
+sub author { my $w = shift->{author} or return undef; return "$w->{email} <$w->{name}>" }
 
 sub link {
   my $link = shift->{link};
