@@ -5,6 +5,7 @@ use Digest::MD5 qw/md5_hex/;
 use POSIX qw/strftime/;
 use LWP::UserAgent;
 use Date::Manip;
+use Data::Dumper;
 use strict;
 
 my %opt = (
@@ -40,7 +41,7 @@ if (!-e "$opt{prefix}/config") {
 
 my $config = read_config("$opt{prefix}/config");
 my $mdu = mdu_init();
-my $ua = LWP::UserAgent->new;
+my $ua = LWP::UserAgent->new(ssl_opts => { verify_hostname => 0 });
 
 $config->{mailfolder} = $opt{mailfolder} if $opt{mailfolder};
 
@@ -166,10 +167,10 @@ sub load_feed {
   fetch_feed($feed) if $arg{fetch};
 
   my $xml = slurp_file($feed->{feedfile});
-  $xml =~ s/[^[:print:]]//g;
+  $xml =~ s/[[\r\n]//g;
 
   my %xmlin_opts = (
-    ForceArray => [ qw/item entry/ ],
+    ForceArray => [ qr/item entry/ ],
     KeyAttr => []
   );
 
@@ -181,7 +182,7 @@ sub load_feed {
   return $feed;
 }
 
-sub fetch_feed {  
+sub fetch_feed {
   my $feed = shift;
 
   verbose("fetching feed $feed->{url}");
@@ -563,7 +564,7 @@ sub init {
 sub format {
   my $index = shift->{index};
 
-  return 'atom/1.0' if $index->{'xmlns:atom'};
+  #return 'atom/1.0' if $index->{'xmlns:atom'};
   return 'atom/1.0' if $index->{entry};
   return 'rss/1.0' if $index->{item};
   return 'rss/2.0' if $index->{channel};
