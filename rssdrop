@@ -2,11 +2,14 @@
 use XML::Simple qw/XMLout XMLin/;
 use Getopt::Long;
 use Digest::MD5 qw/md5_hex/;
-use POSIX qw/strftime/;
+use POSIX qw/strftime setlocale LC_TIME/;
 use LWP::UserAgent;
 use Date::Manip;
 use Data::Dumper;
+use locale;
 use strict;
+
+setlocale LC_TIME, "C";
 
 my %opt = (
   prefix => $ENV{RSSDROP_PREFIX} || "$ENV{HOME}/.rssdrop",
@@ -167,7 +170,7 @@ sub load_feed {
   fetch_feed($feed) if $arg{fetch};
 
   my $xml = slurp_file($feed->{feedfile});
-  $xml =~ s/[[\r\n]//g;
+  $xml =~ s/[\r\n]//g;
 
   my %xmlin_opts = (
     ForceArray => [ qr/item entry/ ],
