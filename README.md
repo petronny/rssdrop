@@ -1,8 +1,9 @@
 rssdrop
 ========
 
-[rssdrop](http://search.cpan.org/~acg/rssdrop-0.2/rssdrop) - deliver rss feeds to Maildirs
+[rssdrop](http://search.cpan.org/~acg/rssdrop-0.2/rssdrop) - deliver rss feeds to Maildirs.
 
+Please reply to [this issue](issue/1) to report the feeds that making bugs.
 
 ## Bugs fixed & Enhancements
 

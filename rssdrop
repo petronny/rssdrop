@@ -5,7 +5,6 @@ use Digest::MD5 qw/md5_hex/;
 use POSIX qw/strftime setlocale LC_TIME/;
 use LWP::UserAgent;
 use Date::Manip;
-use Data::Dumper;
 use locale;
 use strict;
 
