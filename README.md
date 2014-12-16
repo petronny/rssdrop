@@ -7,7 +7,7 @@ Please reply to [this issue](https://github.com/petronny/rssdrop/issues/1) to re
 
 ## Bugs fixed & Enhancements
 
-* Initial bugs
+* Initialization bugs
 * HTTPS support
 * Locale independence
 * More feeds fitting
@@ -40,7 +40,7 @@ Please reply to [this issue](https://github.com/petronny/rssdrop/issues/1) to re
 
 * `perl-xml-simple`
 * `perl-date-manip`
-* `perl-lwp-protocol-https`:For HTTPS support.
+* `perl-lwp-protocol-https`: For HTTPS support.
 
 ## Now works fine with
 
