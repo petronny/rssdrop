@@ -623,7 +623,7 @@ sub items {
 sub author {
   my $feed=shift->{index};
   my $w = $feed->{author} or $feed->{user} or return undef;
-  return "$w->{email} <$w->{name}>";
+  return "$w->{name} <$w->{email}>";
 }
 
 sub pub_time {
@@ -673,7 +673,7 @@ sub author {
 	$w ||= $feed->{user};
 	$w ||= return undef;
 	if (exists($w->{email})){
-		return "$w->{email} <$w->{name}>"
+		return "$w->{name} <$w->{email}>"
 	}
 	else{
 		return "$w->{name}"

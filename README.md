@@ -3,7 +3,7 @@ rssdrop
 
 [rssdrop](http://search.cpan.org/~acg/rssdrop-0.2/rssdrop) - deliver rss feeds to Maildirs.
 
-Please reply to [this issue](https://github.com/petronny/rssdrop/issues/1) to report the feeds that making bugs.
+__Please reply to [this issue](https://github.com/petronny/rssdrop/issues/1) to report the feeds that making bugs.__
 
 ## Bugs fixed & Enhancements
 
