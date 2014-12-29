@@ -44,6 +44,7 @@ if (!-e "$opt{prefix}/config") {
 my $config = read_config("$opt{prefix}/config");
 my $mdu = mdu_init();
 my $ua = LWP::UserAgent->new(ssl_opts => { verify_hostname => 0 });
+$ua->agent('Mozilla/5.0');
 
 $config->{mailfolder} = $opt{mailfolder} if $opt{mailfolder};
 

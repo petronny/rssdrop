@@ -34,7 +34,7 @@ __Please reply to [this issue](https://github.com/petronny/rssdrop/issues/1) to 
 
 	$ rssdrop
 
-## Depences
+## Dependencies
 
 ### Archlinux
 
