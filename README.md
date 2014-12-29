@@ -11,6 +11,7 @@ __Please reply to [this issue](https://github.com/petronny/rssdrop/issues/1) to 
 * HTTPS support
 * Locale independence
 * More feeds fitting
+* Avoid forbidden by browser signature
 
 ## EXAMPLES
 
