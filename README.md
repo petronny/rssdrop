@@ -7,11 +7,11 @@ __Please reply to [this issue](https://github.com/petronny/rssdrop/issues/1) to 
 
 ## Bugs fixed & Enhancements
 
-* Initialization bugs
+* Fixed initialization bugs
 * HTTPS support
 * Locale independence
-* More feeds fitting
-* Avoid forbidden by browser signature
+* Fits more feeds
+* Avoid being forbidden by browser signature
 
 ## EXAMPLES
 
