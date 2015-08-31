@@ -48,5 +48,5 @@ __Please reply to [this issue](https://github.com/petronny/rssdrop/issues/1) to 
 * [https://www.archlinux.org/feeds/news/](https://www.archlinux.org/feeds/news/)
 * [https://www.archlinuxcn.org/feed/](https://www.archlinuxcn.org/feed/)
 * [http://en.cataclysmdda.com/feed](http://en.cataclysmdda.com/feed)
-* [http://jingbei.tk/atom.xml](http://jingbei.tk/atom.xml)
+* [http://jingbei.li/atom.xml](http://jingbei.li/atom.xml)
 
